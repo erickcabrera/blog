@@ -1,0 +1,57 @@
+*
+{
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans";
+}
+.row
+{
+  padding: 15px;
+  background: #4392F1;
+  a
+  {
+    color: #E7F0FF;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+.logo
+{
+  h1
+  {
+    margin: 0px;
+    color: #E3EBFF;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    text-decoration: none;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+}
+ .field
+ {
+   margin-top: 1em;
+ }
+ .form-control
+ {
+   border: none;
+   border-bottom: 1px solid;
+   outline: none;
+   display: block;
+   padding: 10px 0px;
+   font-size: 1.2em;
+   max-height: 100px;
+ }
+.verArticulo
+{
+  text-decoration: none;
+  font-size: 20px;
+  &:hover
+  {
+    text-decoration: none;
+  }
+}
