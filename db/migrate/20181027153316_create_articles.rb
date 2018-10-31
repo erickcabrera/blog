@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.integer :visits_count
 
       t.timestamps
+
     end
   end
 end

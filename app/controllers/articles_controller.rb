@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  #before_action :validate_user, except: [:show,:index]
+  before_action :authenticate_user!, only: [:create, :new]
+  before_action :set_article, except: [:index, :new, :create]
+
   #Get /articles
   def index
     #Obtiene los registros
@@ -7,7 +11,8 @@ class ArticlesController < ApplicationController
   #Get /articles/:id
   def show
     #Encontrar registro por id
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
+    @article.update_visits_count
   end
   #Get /articles/new
   def new
@@ -15,12 +20,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+
   end
 
   #POST /articles
   def create
-  @article = Article.new(article_params)
+  @article = current_user.articles.new(article_params)
     if @article.save
       redirect_to @article
     else
@@ -28,14 +33,14 @@ class ArticlesController < ApplicationController
     end
   end
   def destroy
-    @article = Article.find(params[:id])
+
     @article.destroy
     redirect_to articles_path
   end
 
   #PUT /articles/:id
   def update
-    @article = Article.find(params[:id])
+
     if @article.update(article_params)
       redirect_to @article
     else
@@ -45,6 +50,13 @@ class ArticlesController < ApplicationController
   end
 
   private
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def validate_user
+    redirect_to new_user_session_path, notice: "Necesitas iniciar sesion"
+  end
 
   def article_params
     params.require(:article).permit(:title,:body)

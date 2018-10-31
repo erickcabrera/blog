@@ -1,0 +1,27 @@
+<header class="container-fluid">
+  <nav class="row menu d-flex justify-content-between align-items-center">
+    <div class="logo col-md">
+      <a href="#">
+        <h1>Blogito</h1>
+      </a>
+    </div>
+    <a class="col-md" href="">
+      Inicio
+    </a>
+    <a class="col-md" href="">Diseño</a>
+    <a class="col-md" href="">Programacion</a>
+    <a class="col-md" href="">Tecnologia</a>
+    <%if user_signed_in? %>
+      <div class="col-md">
+        <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class:"text-warning"%>
+      </div>
+    <%else%>
+      <div class="col-md">
+        <%= link_to "Iniciar Sesión", new_user_session_path, class:"text-warning"%>
+      </div>
+      <div class="col-md">
+        <%= link_to "Crear Cuenta", new_user_registration_path, class:"text-warning"%>
+      </div>
+    <%end %>
+  </nav>
+</header>
